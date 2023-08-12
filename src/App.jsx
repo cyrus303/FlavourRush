@@ -22,7 +22,7 @@ import {Header} from './components/Header/Header';
 */
 
 function App() {
-  const [appLocation, setAppLocation] = useState('Mumbai');
+  const [appLocation, setAppLocation] = useState('Bengaluru');
 
   return (
     <div className="main-container">

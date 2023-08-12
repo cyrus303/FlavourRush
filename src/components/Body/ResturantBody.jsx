@@ -7,6 +7,7 @@ import './body.css';
 function Body({appLocation}) {
   const [listOfResturants, setListOfResturants] = useState([]);
   const [topRated, setTopRated] = useState(false);
+
   let cordinates = {};
   useEffect(() => {
     fetchData();

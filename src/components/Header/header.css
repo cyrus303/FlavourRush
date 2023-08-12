@@ -1,32 +1,40 @@
-.logo {
-  height: 6em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-.logo-container{
-display: flex;
-justify-content: space-between;
-align-items: center;
-/* border: 1px solid red; */
-width: 30%;
-}
-
 .header{
+  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: 1px solid white; */
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  background-color: #ffffff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.033);
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  position: relative;
+  animation: slideAnimation 4s forwards;
+  transform: translateX(-100%);
+}
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(-1000%);
+  }
+
+  100% {
+    transform: translateX(20px);
+  }
+}
+
+.FR-logo{
+  width: 200px;
+}
+
+.logo-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-list{
@@ -43,19 +51,28 @@ li{
 
 /* drop down styles */
 
+.locBtn {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  background-color: transparent;
+  color: black;
+}
+
 .dropdown {
   position: relative;
 }
 
 .menu {
   position: absolute;
-
   list-style-type: none;
   margin: 5px 0;
   padding: 0;
-
   border: 1px solid grey;
-  width: 150px;
+  width: 110px;
 }
 
 .menu>li {
@@ -72,7 +89,6 @@ li{
   width: 100%;
   height: 100%;
   text-align: left;
-
   background: none;
   color: inherit;
   border: none;
@@ -80,4 +96,7 @@ li{
   margin: 0;
   font: inherit;
   cursor: pointer;
+  font-size: 16px;
 }
+
+

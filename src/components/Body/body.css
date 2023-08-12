@@ -3,13 +3,6 @@
 }
 
 .res-container{
-  /* padding: 50px;
-  margin-block-end: 0px;
-  display: grid;
-  align-items: start;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  margin: 32px 16px; */
   padding: 50px;
   display: flex;
   flex-wrap: wrap;
@@ -92,6 +85,10 @@ p {
   width: 95%;
   display: flex;
   justify-content: space-between;
+}
+
+.rating{
+  display: flex;
 }
 
 .cuisines-container{
