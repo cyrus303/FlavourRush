@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import ResturantCard from './ResturantCard';
+import {Shimmer} from '../../uitils/Shimmer';
 import './body.css';
 // import {DATA} from '../../uitils/mockData';
 import {SWIGGY_URL} from '../../uitils/config';
@@ -16,7 +17,7 @@ function Body() {
 
   const setStateVariable = (jsonData) => {
     jsonData.data.cards.map((item) => {
-      if (item.card.card.id === 'restaurant_grid_listing') {
+      if (item.card.card.id === 'top_brands_for_you') {
         setListOfResturants(
           item?.card?.card?.gridElements?.infoWithStyle?.restaurants
         );
@@ -27,6 +28,7 @@ function Body() {
   const fetchData = async () => {
     const response = await fetch(SWIGGY_URL);
     const jsonData = await response.json();
+    console.log(jsonData);
     setStateVariable(jsonData);
   };
 
@@ -43,7 +45,9 @@ function Body() {
   };
 
   // console.log(topRated);
-
+  if (listOfResturants.length == 0) {
+    return <Shimmer />;
+  }
   return (
     <div className="body">
       <div className="filter">

@@ -6,6 +6,7 @@ export const Header = () => {
     <div className="header">
       <div className="logo-container">
         <img src={logo} alt="" className="logo" />
+        <p>bangalore</p>
       </div>
       <div className="nav-items">
         <ul className="nav-list">
