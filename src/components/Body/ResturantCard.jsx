@@ -1,24 +1,22 @@
-import React from 'react';
+import {CDN_URL} from '../../uitils/config';
 
-function Card(resData) {
-  const {avgRating, deliveryTime, name, cuisines, cloudinaryImageId} =
-    resData.resData;
-
-  console.log(name);
+function ResturantCard({resData}) {
+  const {avgRating, deliveryTime, name, cloudinaryImageId} =
+    resData.info;
+  // console.log(name);
 
   return (
     <div className="res-card">
       <img
         className="res-logo"
-        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/${cloudinaryImageId}`}
+        src={CDN_URL + cloudinaryImageId}
         alt="resturant image"
       />
       <h3>{name}</h3>
-      <h4>Biryani, North Indian, Asian</h4>
       <h4>{avgRating} Stars</h4>
       <h4>{deliveryTime} minutes</h4>
     </div>
   );
 }
 
-export default Card;
+export default ResturantCard;
