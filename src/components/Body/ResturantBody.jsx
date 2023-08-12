@@ -7,7 +7,7 @@ import './body.css';
 function Body({appLocation}) {
   const [listOfResturants, setListOfResturants] = useState([]);
   const [topRated, setTopRated] = useState(false);
-
+  let cordinates = {};
   useEffect(() => {
     fetchData();
   }, [appLocation]);
@@ -22,23 +22,27 @@ function Body({appLocation}) {
     });
   };
 
-  let cordinates = {};
-
-  if (appLocation === 'Bengaluru') {
-    cordinates = {
-      lat: 12.8996676,
-      lng: 77.4826837,
-    };
-  } else if (appLocation === 'Mumbai') {
-    cordinates = {
-      lat: 19.0759837,
-      lng: 72.8776559,
-    };
-  } else if (appLocation === 'Chennai') {
-    cordinates = {
-      lat: 13.0826802,
-      lng: 80.2707184,
-    };
+  switch (appLocation) {
+    case 'Bengaluru':
+      cordinates = {
+        lat: 12.8996676,
+        lng: 77.4826837,
+      };
+      break;
+    case 'Mumbai':
+      cordinates = {
+        lat: 19.0759837,
+        lng: 72.8776559,
+      };
+      break;
+    case 'Chennai':
+      cordinates = {
+        lat: 13.0826802,
+        lng: 80.2707184,
+      };
+      break;
+    default:
+      break;
   }
 
   const fetchData = async () => {
@@ -46,7 +50,6 @@ function Body({appLocation}) {
       `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${cordinates.lat}&lng=${cordinates.lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
     );
     const jsonData = await response.json();
-    console.log(jsonData);
     setStateVariable(jsonData);
   };
 

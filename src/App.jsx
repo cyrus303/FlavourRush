@@ -24,15 +24,14 @@ import {Header} from './components/Header/Header';
 function App() {
   const [appLocation, setAppLocation] = useState('Mumbai');
 
-  console.log(appLocation);
   return (
-    <>
+    <div className="main-container">
       <Header
         setAppLocation={setAppLocation}
         appLocation={appLocation}
       />
       <ResturantBody appLocation={appLocation} />
-    </>
+    </div>
   );
 }
 
