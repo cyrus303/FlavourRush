@@ -1,12 +1,19 @@
 import logo from '../../assets/logo3.png';
+import Location from './Location';
 import './header.css';
 
-export const Header = () => {
+export const Header = ({setAppLocation, appLocation}) => {
+  // console.log(props);
   return (
     <div className="header">
       <div className="logo-container">
         <img src={logo} alt="" className="logo" />
-        <p>bangalore</p>
+        {
+          <Location
+            setAppLocation={setAppLocation}
+            appLocation={appLocation}
+          />
+        }
       </div>
       <div className="nav-items">
         <ul className="nav-list">

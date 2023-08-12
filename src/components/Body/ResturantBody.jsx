@@ -2,18 +2,15 @@ import {useEffect, useState} from 'react';
 import ResturantCard from './ResturantCard';
 import {Shimmer} from '../../uitils/Shimmer';
 import './body.css';
-// import {DATA} from '../../uitils/mockData';
-import {SWIGGY_URL} from '../../uitils/config';
+// import {SWIGGY_URL} from '../../uitils/config';
 
-function Body() {
-  // const cards = DATA.data.cards[2].data.data.cards;
-
+function Body({appLocation}) {
   const [listOfResturants, setListOfResturants] = useState([]);
   const [topRated, setTopRated] = useState(false);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [appLocation]);
 
   const setStateVariable = (jsonData) => {
     jsonData.data.cards.map((item) => {
@@ -25,8 +22,29 @@ function Body() {
     });
   };
 
+  let cordinates = {};
+
+  if (appLocation === 'Bengaluru') {
+    cordinates = {
+      lat: 12.8996676,
+      lng: 77.4826837,
+    };
+  } else if (appLocation === 'Mumbai') {
+    cordinates = {
+      lat: 19.0759837,
+      lng: 72.8776559,
+    };
+  } else if (appLocation === 'Chennai') {
+    cordinates = {
+      lat: 13.0826802,
+      lng: 80.2707184,
+    };
+  }
+
   const fetchData = async () => {
-    const response = await fetch(SWIGGY_URL);
+    const response = await fetch(
+      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${cordinates.lat}&lng=${cordinates.lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+    );
     const jsonData = await response.json();
     console.log(jsonData);
     setStateVariable(jsonData);

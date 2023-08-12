@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import './App.css';
 import ResturantBody from './components/Body/ResturantBody';
 import {Header} from './components/Header/Header';
@@ -21,10 +22,16 @@ import {Header} from './components/Header/Header';
 */
 
 function App() {
+  const [appLocation, setAppLocation] = useState('Mumbai');
+
+  console.log(appLocation);
   return (
     <>
-      <Header />
-      <ResturantBody />
+      <Header
+        setAppLocation={setAppLocation}
+        appLocation={appLocation}
+      />
+      <ResturantBody appLocation={appLocation} />
     </>
   );
 }
