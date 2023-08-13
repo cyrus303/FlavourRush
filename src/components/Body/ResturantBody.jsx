@@ -12,20 +12,30 @@ import {ItemShimmerUI} from '../../uitils/shimmerUI/ItemShimmerUI';
 
 function Body({appLocation}) {
   const [listOfResturants, setListOfResturants] = useState([
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   ]);
   const [filtredResturants, setFiltredResturants] = useState([]);
   const [searchTerm, SetSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
   let cordinates = {};
+
   useEffect(() => {
+    setLoading(true);
     fetchData();
     setFiltredResturants([]);
     SetSearchTerm('');
   }, [appLocation]);
 
   // console.log(filtredResturants);
+
+  const fetchData = async () => {
+    const response = await fetch(
+      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${cordinates.lat}&lng=${cordinates.lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+    );
+    const jsonData = await response.json();
+    setStateVariable(jsonData);
+  };
 
   const setStateVariable = (jsonData) => {
     jsonData.data.cards.map((item) => {
@@ -61,14 +71,6 @@ function Body({appLocation}) {
       break;
   }
 
-  const fetchData = async () => {
-    const response = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${cordinates.lat}&lng=${cordinates.lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
-    );
-    const jsonData = await response.json();
-    setStateVariable(jsonData);
-  };
-
   // console.log(listOfResturants);
 
   const handleSortRes = (event) => {
@@ -93,7 +95,7 @@ function Body({appLocation}) {
   return listOfResturants.length === 0 ? (
     <>
       <SearchBarShimmer />
-      <ItemShimmerUI />
+      {/* <ItemShimmerUI /> */}
     </>
   ) : (
     <div className="body">
@@ -106,7 +108,7 @@ function Body({appLocation}) {
       />
       <div className="res-container">
         {filtredResturants.length > 0
-          ? filtredResturants.map((card) => {
+          ? filtredResturants.map(() => {
               return loading ? (
                 <ItemShimmerUI />
               ) : (
