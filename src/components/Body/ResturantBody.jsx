@@ -3,16 +3,23 @@ import ResturantCard from './ResturantCard';
 import {Shimmer} from '../../uitils/Shimmer';
 import './body.css';
 import SearchBar from './SearchBar';
+import _ from 'lodash';
+
 // import {SWIGGY_URL} from '../../uitils/config';
 
 function Body({appLocation}) {
   const [listOfResturants, setListOfResturants] = useState([]);
-  const [topRated, setTopRated] = useState(false);
+  const [filtredResturants, setFiltredResturants] = useState([]);
+  const [searchTerm, SetSearchTerm] = useState('');
 
   let cordinates = {};
   useEffect(() => {
     fetchData();
+    setFiltredResturants([]);
+    SetSearchTerm('');
   }, [appLocation]);
+
+  // console.log(filtredResturants);
 
   const setStateVariable = (jsonData) => {
     jsonData.data.cards.map((item) => {
@@ -57,33 +64,49 @@ function Body({appLocation}) {
 
   // console.log(listOfResturants);
 
-  const handleSortRes = () => {
-    console.log('btn clicked');
-    setTopRated((prev) => !prev);
-    if (topRated) {
-      const filtredData = listOfResturants.filter((item) => {
-        return item.info.avgRating > 4;
-      });
-      setListOfResturants(filtredData);
+  const handleSortRes = (event) => {
+    console.log(event.target.textContent);
+    if (event.target.textContent === 'Top Rated') {
+      const arrayOfObjects = [...listOfResturants]; // Your array of objects
+      const sortedArray = _.sortBy(
+        arrayOfObjects,
+        'info.avgRating'
+      ).reverse();
+      setListOfResturants(sortedArray);
+    } else if (event.target.textContent === 'Delivery Time') {
+      const arrayOfObjects = [...listOfResturants]; // Your array of objects
+      const sortedArray = _.sortBy(
+        arrayOfObjects,
+        'info.sla.deliveryTime'
+      ).reverse();
+      setListOfResturants(sortedArray);
     }
   };
 
-  // console.log(topRated);
   if (listOfResturants.length == 0) {
     return <Shimmer />;
   }
   return (
     <div className="body">
-      {/* <div className="filter">
-        <button className="filter-btn" onClick={handleFilterRes}>
-          Top Rated Button
-        </button>
-      </div> */}
-      <SearchBar handleSort={handleSortRes} />
+      <SearchBar
+        handleSort={handleSortRes}
+        listOfResturants={listOfResturants}
+        searchTerm={searchTerm}
+        SetSearchTerm={SetSearchTerm}
+        setFiltredResturants={setFiltredResturants}
+      />
       <div className="res-container">
-        {listOfResturants.map((card) => {
-          return <ResturantCard resData={card} key={card.info.id} />;
-        })}
+        {filtredResturants.length > 0
+          ? filtredResturants.map((card) => {
+              return (
+                <ResturantCard resData={card} key={card.info.id} />
+              );
+            })
+          : listOfResturants.map((card) => {
+              return (
+                <ResturantCard resData={card} key={card.info.id} />
+              );
+            })}
       </div>
     </div>
   );
