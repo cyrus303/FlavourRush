@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import ResturantCard from './ResturantCard';
 import {Shimmer} from '../../uitils/Shimmer';
 import './body.css';
+import SearchBar from './SearchBar';
 // import {SWIGGY_URL} from '../../uitils/config';
 
 function Body({appLocation}) {
@@ -56,7 +57,8 @@ function Body({appLocation}) {
 
   // console.log(listOfResturants);
 
-  const handleFilterRes = () => {
+  const handleSortRes = () => {
+    console.log('btn clicked');
     setTopRated((prev) => !prev);
     if (topRated) {
       const filtredData = listOfResturants.filter((item) => {
@@ -72,12 +74,12 @@ function Body({appLocation}) {
   }
   return (
     <div className="body">
-      <div className="filter">
+      {/* <div className="filter">
         <button className="filter-btn" onClick={handleFilterRes}>
           Top Rated Button
         </button>
-      </div>
-      <div className="search">Search</div>
+      </div> */}
+      <SearchBar handleSort={handleSortRes} />
       <div className="res-container">
         {listOfResturants.map((card) => {
           return <ResturantCard resData={card} key={card.info.id} />;

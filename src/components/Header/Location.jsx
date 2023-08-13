@@ -7,7 +7,7 @@ function Location({setAppLocation, appLocation}) {
   // );
   // console.log(props);
   const handleOpen = () => {
-    setOpen(true);
+    setOpen((prev) => !prev);
   };
 
   const handleMenu = (event) => {

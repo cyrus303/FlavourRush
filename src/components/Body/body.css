@@ -26,7 +26,7 @@
 }
 
 .res-card:hover{
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 40px #d4563a66;
     scale: 1.05;
 }
 
@@ -52,7 +52,6 @@ p {
 
 .name-location-container{
   display: flex;
-  /* border: 1px solid red; */
   width: 95%;
   justify-content: space-between;
   align-items: flex-start;
@@ -74,6 +73,13 @@ p {
 
 .name{
   width: 15ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.area-name{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
