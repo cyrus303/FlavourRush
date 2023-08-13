@@ -83,10 +83,9 @@ function Body({appLocation}) {
     }
   };
 
-  if (listOfResturants.length == 0) {
-    return <Shimmer />;
-  }
-  return (
+  return listOfResturants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <SearchBar
         handleSort={handleSortRes}
