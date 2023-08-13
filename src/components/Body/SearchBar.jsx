@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import './searchBar.css';
 import _ from 'lodash';
 

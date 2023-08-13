@@ -1,9 +1,12 @@
 import {useEffect, useState} from 'react';
 import ResturantCard from './ResturantCard';
-import {Shimmer} from '../../uitils/Shimmer';
+import {SearchBarShimmer} from '../../uitils/shimmerUI/SearchBar';
 import './body.css';
 import SearchBar from './SearchBar';
 import _ from 'lodash';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import {ItemShimmerUI} from '../../uitils/shimmerUI/ItemShimmerUI';
 
 // import {SWIGGY_URL} from '../../uitils/config';
 
@@ -84,7 +87,10 @@ function Body({appLocation}) {
   };
 
   return listOfResturants.length === 0 ? (
-    <Shimmer />
+    <>
+      <SearchBarShimmer />
+      <ItemShimmerUI />
+    </>
   ) : (
     <div className="body">
       <SearchBar
