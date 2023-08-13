@@ -13,7 +13,6 @@ function ResturantCard({resData}) {
     sla,
     costForTwo,
   } = resData.info;
-  console.log(resData.info);
 
   return (
     <div className="res-card">
@@ -28,7 +27,7 @@ function ResturantCard({resData}) {
           <span className="pin">
             <FaLocationDot />
           </span>
-          {areaName}
+          <span className="area-name">{areaName}</span>
         </p>
       </div>
 
