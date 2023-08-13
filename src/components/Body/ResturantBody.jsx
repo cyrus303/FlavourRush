@@ -11,9 +11,12 @@ import {ItemShimmerUI} from '../../uitils/shimmerUI/ItemShimmerUI';
 // import {SWIGGY_URL} from '../../uitils/config';
 
 function Body({appLocation}) {
-  const [listOfResturants, setListOfResturants] = useState([]);
+  const [listOfResturants, setListOfResturants] = useState([
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  ]);
   const [filtredResturants, setFiltredResturants] = useState([]);
   const [searchTerm, SetSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
 
   let cordinates = {};
   useEffect(() => {
@@ -32,6 +35,7 @@ function Body({appLocation}) {
         );
       }
     });
+    setLoading(false);
   };
 
   switch (appLocation) {
@@ -103,9 +107,15 @@ function Body({appLocation}) {
       <div className="res-container">
         {filtredResturants.length > 0
           ? filtredResturants.map((card) => {
-              return (
+              return loading ? (
+                <ItemShimmerUI />
+              ) : (
                 <ResturantCard resData={card} key={card.info.id} />
               );
+            })
+          : loading
+          ? listOfResturants.map((card) => {
+              return <ItemShimmerUI />;
             })
           : listOfResturants.map((card) => {
               return (

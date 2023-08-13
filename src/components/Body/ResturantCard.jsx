@@ -2,6 +2,9 @@ import {CDN_URL} from '../../uitils/config';
 import {FaLocationDot} from 'react-icons/fa6';
 import {MdStars} from 'react-icons/md';
 
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+
 function ResturantCard({resData}) {
   const {
     avgRating,
@@ -22,7 +25,7 @@ function ResturantCard({resData}) {
         alt="resturant image"
       />
       <div className="name-location-container">
-        <h4 className="name">{name}</h4>
+        <h4 className="name">{name} </h4>
         <p className="pin-container">
           <span className="pin">
             <FaLocationDot />
