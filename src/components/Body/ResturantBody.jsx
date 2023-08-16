@@ -20,6 +20,7 @@ function Body({appLocation}) {
 
   let cordinates = {};
   useEffect(() => {
+    setLoading(true);
     fetchData();
     setFiltredResturants([]);
     SetSearchTerm('');

@@ -2,16 +2,11 @@ import React, {useState} from 'react';
 
 function Location({setAppLocation, appLocation}) {
   const [open, setOpen] = React.useState(false);
-  // const [locationValue, setLocationValue] = useState(
-  //   'select a location'
-  // );
-  // console.log(props);
   const handleOpen = () => {
     setOpen((prev) => !prev);
   };
 
   const handleMenu = (event) => {
-    // setLocationValue(event.target.textContent);
     setAppLocation(event.target.textContent);
     setOpen(false);
   };

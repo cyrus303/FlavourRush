@@ -52,7 +52,7 @@ const SearchBar = ({
             placeholder="Search for resturants..."
             required
             type="text"
-            value={searchTerm.trim()}
+            value={searchTerm}
             onChange={(event) => handleSearch(event)}
             onKeyDown={(event) => handleSubmit(event)}
           />
