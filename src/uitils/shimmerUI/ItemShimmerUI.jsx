@@ -7,7 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 export const ItemShimmerUI = () => {
   return (
     <div className="res-card">
-      <Skeleton width={330} height={200} className="skeleton-logo" />
+      <Skeleton width={150} height={100} className="skeleton-logo" />
       <div className="name-location-container">
         <Skeleton width={100} height={20} className="skeleton-name" />
         <div className="skeleton-pin">
