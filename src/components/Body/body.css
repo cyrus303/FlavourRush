@@ -3,11 +3,11 @@
 }
 
 .res-container{
-  padding: 50px;
+  padding: 20px 50px 50px 50px ;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: center;;
 }
 
 .filter-btn{
@@ -108,4 +108,18 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+}
+
+.body{
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items:flex-start */
+}
+
+.body .title {
+  /* padding-left: 10rem; */
+  padding-top: 2rem;
+ text-align: center;
 }

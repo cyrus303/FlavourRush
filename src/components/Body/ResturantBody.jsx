@@ -106,6 +106,9 @@ function Body({appLocation}) {
         SetSearchTerm={SetSearchTerm}
         setFiltredResturants={setFiltredResturants}
       />
+      <h2 className="title">
+        Restaurants with online food delivery in {appLocation}
+      </h2>
       <div className="res-container">
         {filtredResturants.length > 0
           ? filtredResturants.map(() => {
