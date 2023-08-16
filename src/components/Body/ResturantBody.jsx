@@ -8,12 +8,8 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {ItemShimmerUI} from '../../uitils/shimmerUI/ItemShimmerUI';
 
-// import {SWIGGY_URL} from '../../uitils/config';
-
 function Body({appLocation}) {
-  const [listOfResturants, setListOfResturants] = useState([
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  ]);
+  const [listOfResturants, setListOfResturants] = useState([]);
   const [filtredResturants, setFiltredResturants] = useState([]);
   const [searchTerm, SetSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
@@ -101,9 +97,9 @@ function Body({appLocation}) {
         <SearchBarShimmer />
       </div>
       <div className="res-container">
-        {listOfResturants.map((card) => {
-          return <ItemShimmerUI />;
-        })}
+        {Array.from({length: 20}).map((_, index) => (
+          <ItemShimmerUI key={index} />
+        ))}
       </div>
     </div>
   ) : (
