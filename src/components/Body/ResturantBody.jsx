@@ -33,6 +33,9 @@ function Body({appLocation}) {
         setListOfResturants(
           item?.card?.card?.gridElements?.infoWithStyle?.restaurants
         );
+        setFiltredResturants(
+          item?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        );
       }
     });
     setLoading(false);
@@ -90,11 +93,18 @@ function Body({appLocation}) {
     }
   };
 
-  return listOfResturants.length === 0 ? (
-    <>
+  return loading ? (
+    <div className="body">
       <SearchBarShimmer />
-      <ItemShimmerUI />
-    </>
+      <div className="title">
+        <SearchBarShimmer />
+      </div>
+      <div className="res-container">
+        {listOfResturants.map((card) => {
+          return <ItemShimmerUI />;
+        })}
+      </div>
+    </div>
   ) : (
     <div className="body">
       <SearchBar
@@ -108,23 +118,9 @@ function Body({appLocation}) {
         Restaurants with online food delivery in {appLocation}
       </h2>
       <div className="res-container">
-        {filtredResturants.length > 0
-          ? filtredResturants.map((card) => {
-              return loading ? (
-                <ItemShimmerUI />
-              ) : (
-                <ResturantCard resData={card} key={card.info.id} />
-              );
-            })
-          : loading
-          ? listOfResturants.map((card) => {
-              return <ItemShimmerUI />;
-            })
-          : listOfResturants.map((card) => {
-              return (
-                <ResturantCard resData={card} key={card.info.id} />
-              );
-            })}
+        {filtredResturants.map((card) => {
+          return <ResturantCard resData={card} key={card.info.id} />;
+        })}
       </div>
     </div>
   );

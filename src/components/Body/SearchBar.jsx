@@ -9,19 +9,15 @@ const SearchBar = ({
   SetSearchTerm,
 }) => {
   const handleSearch = (event) => {
-    event.preventDefault();
     SetSearchTerm(event.target.value);
   };
 
-  const handleSubmit = () => {
-    const arrayOfObjects = [...listOfResturants]; // Your array of objects
-    const filteredArray = _.filter(arrayOfObjects, (obj) => {
-      const resturantName = obj.info.name.toLowerCase();
-      // const cuisines = obj.info.cuisines;
-      return resturantName.includes(searchTerm);
-      // cuisines.includes(searchTerm)
-    });
-    setFiltredResturants(filteredArray);
+  const handleSubmit = (event) => {
+    // event.preventDefault();
+    const filtredRes = listOfResturants.filter((res) =>
+      res.info.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFiltredResturants(filtredRes);
   };
 
   const handleReset = () => {
@@ -81,9 +77,6 @@ const SearchBar = ({
             </svg>
           </button>
         </form>
-        {/* <button className="bottone1" onClick={handleSubmit}>
-          Submit
-        </button> */}
       </div>
       <div className="filter-Btn-Container">
         <button
