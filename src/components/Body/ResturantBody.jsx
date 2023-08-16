@@ -4,7 +4,6 @@ import {SearchBarShimmer} from '../../uitils/shimmerUI/SearchBar';
 import './body.css';
 import SearchBar from './SearchBar';
 import _ from 'lodash';
-import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {ItemShimmerUI} from '../../uitils/shimmerUI/ItemShimmerUI';
 
@@ -74,19 +73,19 @@ function Body({appLocation}) {
   const handleSortRes = (event) => {
     console.log(event.target.textContent);
     if (event.target.textContent === 'Top Rated') {
-      const arrayOfObjects = [...listOfResturants]; // Your array of objects
+      const arrayOfObjects = [...filtredResturants]; // Your array of objects
       const sortedArray = _.sortBy(
         arrayOfObjects,
         'info.avgRating'
       ).reverse();
-      setListOfResturants(sortedArray);
+      setFiltredResturants(sortedArray);
     } else if (event.target.textContent === 'Delivery Time') {
-      const arrayOfObjects = [...listOfResturants]; // Your array of objects
+      const arrayOfObjects = [...filtredResturants]; // Your array of objects
       const sortedArray = _.sortBy(
         arrayOfObjects,
         'info.sla.deliveryTime'
       ).reverse();
-      setListOfResturants(sortedArray);
+      setFiltredResturants(sortedArray);
     }
   };
 
