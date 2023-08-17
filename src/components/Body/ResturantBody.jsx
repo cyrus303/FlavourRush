@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import ResturantCard from './ResturantCard';
 import {SearchBarShimmer} from '../../uitils/shimmerUI/SearchBar';
 import './body.css';
@@ -6,8 +6,13 @@ import SearchBar from './SearchBar';
 import _ from 'lodash';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {ItemShimmerUI} from '../../uitils/shimmerUI/ItemShimmerUI';
+import appLocationContext from '../../uitils/Context';
 
-function Body({appLocation}) {
+function Body() {
+  const {appLocation, setAppLocation} = useContext(
+    appLocationContext
+  );
+
   const [listOfResturants, setListOfResturants] = useState([]);
   const [filtredResturants, setFiltredResturants] = useState([]);
   const [searchTerm, SetSearchTerm] = useState('');
@@ -20,8 +25,6 @@ function Body({appLocation}) {
     setFiltredResturants([]);
     SetSearchTerm('');
   }, [appLocation]);
-
-  // console.log(filtredResturants);
 
   const setStateVariable = (jsonData) => {
     jsonData.data.cards.map((item) => {

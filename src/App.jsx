@@ -1,20 +1,21 @@
 import {useState} from 'react';
 import './App.css';
-import ResturantBody from './components/Body/ResturantBody';
 import {Header} from './components/Header/Header';
-import {Route, Routes, Outlet} from 'react-router-dom';
+import appLocationContext from './uitils/Context';
+import {Outlet} from 'react-router-dom';
 
 function App() {
   const [appLocation, setAppLocation] = useState('Bengaluru');
 
   return (
-    <div className="main-container">
-      <Header
-        setAppLocation={setAppLocation}
-        appLocation={appLocation}
-      />
-      <Outlet />
-    </div>
+    <appLocationContext.Provider
+      value={{appLocation, setAppLocation}}
+    >
+      <div className="main-container">
+        <Header />
+        <Outlet />
+      </div>
+    </appLocationContext.Provider>
   );
 }
 

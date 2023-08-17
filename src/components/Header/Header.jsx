@@ -4,9 +4,16 @@ import Location from './Location';
 import {FaLocationDot} from 'react-icons/fa6';
 import {RiShoppingCart2Fill} from 'react-icons/ri';
 import './header.css';
+import {Link} from 'react-router-dom';
 
-export const Header = ({setAppLocation, appLocation}) => {
-  // console.log(props);
+import {useContext} from 'react';
+import appLocationContext from '../../uitils/Context';
+
+export const Header = () => {
+  const {appLocation, setAppLocation} = useContext(
+    appLocationContext
+  );
+
   return (
     <div className="header">
       <div className="logo-container">
@@ -24,9 +31,15 @@ export const Header = ({setAppLocation, appLocation}) => {
       </div>
       <div className="nav-items">
         <ul className="nav-list">
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>
+            <Link to={'/'}>Home</Link>
+          </li>
+          <li>
+            <Link to={'/about'}>About</Link>
+          </li>
+          <li>
+            <Link to={'/contact'}>Contact</Link>
+          </li>
           <li className="cart-icon">
             <RiShoppingCart2Fill /> Cart
           </li>
