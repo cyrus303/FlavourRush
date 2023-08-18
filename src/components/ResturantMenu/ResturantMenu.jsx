@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {MENU_URL} from '../../uitils/config';
+import './resturantMenu.css';
 
 const ResturantMenu = () => {
   const [resturantBrief, setResturantBrief] = useState([]);
@@ -37,20 +38,10 @@ const ResturantMenu = () => {
     });
   };
 
-  useEffect(() => {
-    // console.log('resturant beirf');
-    // console.log(resturantBrief);
-    // console.log('offers');
-    // console.log(currentOffers);
-    // console.log('menu');
-    // console.log(menuList);
-  }, [resturantBrief]);
-
   const fetchMenu = async () => {
     const response = await fetch(MENU_URL + resId);
     const data = await response.json();
     setStateVariable(data);
-    // setResturantInfo(data.data.cards);
   };
 
   if (menuList.length === 0) return null;

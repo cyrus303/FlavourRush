@@ -26,8 +26,8 @@
 }
 
 .res-card:hover{
-    box-shadow: 0px 2px 40px #d4563a66;
-    scale: 1.05;
+    box-shadow: 0px 2px 40px #d4563aaa;
+    scale: .95;
 }
 
 .res-logo {
