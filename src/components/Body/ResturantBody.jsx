@@ -7,6 +7,7 @@ import _ from 'lodash';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {ItemShimmerUI} from '../../uitils/shimmerUI/ItemShimmerUI';
 import appLocationContext from '../../uitils/Context';
+import {Link} from 'react-router-dom';
 
 function Body() {
   const {appLocation, setAppLocation} = useContext(
@@ -117,9 +118,11 @@ function Body() {
         Restaurants with online food delivery in {appLocation}
       </h2>
       <div className="res-container">
-        {filtredResturants.map((card) => {
-          return <ResturantCard resData={card} key={card.info.id} />;
-        })}
+        {filtredResturants.map((card) => (
+          <Link key={card.info.id} to={'/resturant/' + card.info.id}>
+            <ResturantCard resData={card} />
+          </Link>
+        ))}
       </div>
     </div>
   );
