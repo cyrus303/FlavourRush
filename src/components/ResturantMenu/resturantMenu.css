@@ -1,0 +1,109 @@
+.menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-items{
+  /* border: 1px solid red; */
+  width: 60%;
+}
+
+
+.res-header{
+/* border: 1px solid blue; */
+padding: 1rem 0 1rem 0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 2px dashed rgba(179, 179, 179, 0.435);
+}
+
+.bread-crumb{
+  margin-bottom: 1rem;
+}
+
+.res-header-right{
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 2px solid rgba(179, 179, 179, 0.435);
+  border-radius: 5px;
+}
+
+.res-header-right h4{
+  display: flex;
+  align-items: baseline;
+  color: green;
+}
+
+.star-icon{
+  margin-right: 5px;
+  font-size: large;
+}
+
+.total-rating{
+  border-top: 2px solid rgba(179, 179, 179, 0.435);
+}
+
+.timing-info{
+  padding: 1rem 0 1rem 0;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* border-bottom: 2px dashed rgba(179, 179, 179, 0.435); */
+}
+
+.time{
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.cost{
+  display: flex;
+  align-items: baseline;
+  align-items: center;
+}
+
+.icon{
+  font-size: 1.3rem;
+  margin-right: 0.3rem;
+}
+
+/* offer card */
+.offer-container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.offer-icon{
+  color:#7F5449
+}
+
+.offer-value{
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.cuppon-code{
+  font-size: 12px;
+}
+
+.offer-card{
+  border: 1px solid rgba(179, 179, 179, 0.435);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
