@@ -79,7 +79,7 @@ border-bottom: 2px dashed rgba(179, 179, 179, 0.435);
 /* offer card */
 .offer-container{
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
@@ -103,7 +103,11 @@ border-bottom: 2px dashed rgba(179, 179, 179, 0.435);
   width: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   border-radius: 10px;
+  margin: 0.3rem;
+}
+
+.catageory-title{
+  margin-top: 2rem;
 }

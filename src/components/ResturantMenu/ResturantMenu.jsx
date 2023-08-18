@@ -6,11 +6,12 @@ import {RxLapTimer} from 'react-icons/rx';
 import {HiOutlineCurrencyRupee} from 'react-icons/hi';
 import OfferCard from './OfferCard';
 import './resturantMenu.css';
+import MenuList from './MenuList';
 
 const ResturantMenu = () => {
   const [resturantBrief, setResturantBrief] = useState([]);
   const [currentOffers, setCurrentOffers] = useState([]);
-  const [menuList, setMenuList] = useState([]);
+  const [menuList, setMenuList] = useState(null);
   const {resId} = useParams();
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const ResturantMenu = () => {
     });
   };
 
-  if (menuList.length === 0) return null;
+  if (menuList === null) return null;
 
   const {
     city,
@@ -57,8 +58,6 @@ const ResturantMenu = () => {
     cuisines,
     costForTwo,
   } = resturantBrief;
-
-  console.log(currentOffers);
 
   return (
     <div className="menu-container">
@@ -97,14 +96,7 @@ const ResturantMenu = () => {
             return <OfferCard offer={Item} />;
           })}
         </div>
-        <h2>Menu</h2>
-        <ul>
-          {menuList[2].card.card.itemCards.map((Item) => {
-            return (
-              <li key={Item.card.info.id}>{Item.card.info.name}</li>
-            );
-          })}
-        </ul>
+        <MenuList menuList={menuList} />
       </div>
     </div>
   );
