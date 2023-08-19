@@ -14,7 +14,8 @@ export const Header = () => {
     appLocationContext
   );
 
-  const {cartCount} = useContext(CartContext);
+  const {valueToPass} = useContext(CartContext);
+  const {cartCount} = valueToPass;
 
   return (
     <div className="header">
@@ -44,9 +45,9 @@ export const Header = () => {
           </li>
           <li className="cart-icon">
             <RiShoppingCart2Fill /> Cart
-            {cartCount.count && (
+            {cartCount.length > 0 && (
               <span className="header-count-tag">
-                {cartCount.count}
+                {cartCount.length}
               </span>
             )}
           </li>

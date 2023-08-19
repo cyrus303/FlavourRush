@@ -3,13 +3,15 @@ import {createContext, useState} from 'react';
 const CartContext = createContext();
 
 const CartProvider = ({children}) => {
-  const [cartCount, SetCartCount] = useState({
-    item: '',
-    count: '6',
-  });
+  const [cartCount, SetCartCount] = useState([]);
+
+  const valueToPass = {
+    SetCartCount,
+    cartCount,
+  };
 
   return (
-    <CartContext.Provider value={{cartCount}}>
+    <CartContext.Provider value={{valueToPass}}>
       {children}
     </CartContext.Provider>
   );

@@ -7,12 +7,20 @@ import {useContext} from 'react';
 import {CartContext} from '../../Context/CartContext';
 
 const MenuItemRender = ({itemCards}) => {
-  const {cartCount} = useContext(CartContext);
+  const {valueToPass} = useContext(CartContext);
+  const {cartCount, SetCartCount} = valueToPass;
 
   return itemCards.map((dish) => {
-    const {name, price, imageId, description, isVeg} = dish.card.info;
+    const {name, price, imageId, description, isVeg, id} =
+      dish.card.info;
+
+    const handleAddToCart = (event) => {
+      SetCartCount([...cartCount, {item: dish.card.info, count: 1}]);
+    };
+
+    console.log(cartCount);
     return (
-      <div className="each-item-container">
+      <div className="each-item-container" key={id}>
         <div className="left-container">
           <div className="veg-symbol">
             {isVeg && <img src={vegLogo} alt="veg logo" />}
@@ -35,7 +43,10 @@ const MenuItemRender = ({itemCards}) => {
             alt="resturant image"
           />
           <div className="cart-btn-container">
-            <button className="CartBtn">
+            <button
+              className="CartBtn"
+              onClick={(event) => handleAddToCart(event)}
+            >
               <span className="IconContainer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
