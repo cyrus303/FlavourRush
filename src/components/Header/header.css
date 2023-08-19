@@ -124,3 +124,17 @@
   align-items: center;
 }
 
+/* header count tag */
+
+.header-count-tag{
+  background-color: #d4563a;
+  color: white;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  font-size:large;
+}

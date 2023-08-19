@@ -93,7 +93,9 @@ const ResturantMenu = () => {
         </div>
         <div className="offer-container">
           {currentOffers.map((Item) => {
-            return <OfferCard offer={Item} />;
+            return (
+              <OfferCard offer={Item} key={Item.info.offerIds[0]} />
+            );
           })}
         </div>
         <MenuList menuList={menuList} />

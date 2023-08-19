@@ -5,14 +5,17 @@ import {FaLocationDot} from 'react-icons/fa6';
 import {RiShoppingCart2Fill} from 'react-icons/ri';
 import './header.css';
 import {Link} from 'react-router-dom';
-
 import {useContext} from 'react';
 import appLocationContext from '../../Context/Context';
+import {CartContext} from '../../Context/CartContext';
 
 export const Header = () => {
   const {appLocation, setAppLocation} = useContext(
     appLocationContext
   );
+
+  const {valueToPass} = useContext(CartContext);
+  const {cartCount} = valueToPass;
 
   return (
     <div className="header">
@@ -40,8 +43,15 @@ export const Header = () => {
           <li>
             <Link to={'/contact'}>Contact</Link>
           </li>
-          <li className="cart-icon">
-            <RiShoppingCart2Fill /> Cart
+          <li>
+            <Link to={'/cart'} className="cart-icon">
+              <RiShoppingCart2Fill /> Cart
+              {cartCount.length > 0 && (
+                <span className="header-count-tag">
+                  {cartCount.length}
+                </span>
+              )}
+            </Link>
           </li>
         </ul>
       </div>
