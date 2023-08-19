@@ -15,7 +15,6 @@ export const Header = () => {
   );
 
   const {cartCount} = useContext(CartContext);
-  console.log(cartCount.count);
 
   return (
     <div className="header">
@@ -45,6 +44,11 @@ export const Header = () => {
           </li>
           <li className="cart-icon">
             <RiShoppingCart2Fill /> Cart
+            {cartCount.count && (
+              <span className="header-count-tag">
+                {cartCount.count}
+              </span>
+            )}
           </li>
         </ul>
       </div>

@@ -5,7 +5,7 @@ const CartContext = createContext();
 const CartProvider = ({children}) => {
   const [cartCount, SetCartCount] = useState({
     item: '',
-    count: 2,
+    count: '6',
   });
 
   return (
