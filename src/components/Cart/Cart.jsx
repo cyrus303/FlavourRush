@@ -10,19 +10,15 @@ const Cart = () => {
   const {valueToPass} = useContext(CartContext);
   const {cartCount, SetCartCount} = valueToPass;
 
-  // console.log(cartCount);
-
   ////////////////////////////////
   const resultArray = [];
 
   // Create a map to track unique items and their counts
   const itemMap = new Map();
-
   // Iterate through the input array
   for (const itemObj of cartCount) {
     const item = itemObj.item;
     const itemId = item.id;
-
     // If the item is already in the map, increase its count
     if (itemMap.has(itemId)) {
       const existingItem = itemMap.get(itemId);
@@ -32,14 +28,10 @@ const Cart = () => {
       itemMap.set(itemId, {...itemObj, count: 1});
     }
   }
-
   // Convert the map values back to an array
   for (const uniqueItem of itemMap.values()) {
     resultArray.push(uniqueItem);
   }
-
-  // console.log(resultArray);
-
   /////////////////////////
 
   let totalCost = cartCount.reduce(function (prevValue, currValue) {
