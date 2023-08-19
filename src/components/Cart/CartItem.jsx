@@ -24,13 +24,15 @@ const CartItem = ({itemInCart}) => {
       </div>
       <div className="cart-item-right">
         <div className="categeory">{category}</div>
-        <p className="title">{name}</p>
+        <div className="title-count-container">
+          <p className="title">{name}</p>
+          <p className="total-count-tag">{itemInCart.count}</p>
+        </div>
         <p className="cart-description">{description}</p>
         <p className="cart-price">
           <MdCurrencyRupee />
           {price ? price / 100 : defaultPrice / 100}
         </p>
-        {/* <p>{Object.values(itemAttribute).join(', ')}</p> */}
       </div>
     </div>
   );

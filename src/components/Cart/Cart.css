@@ -351,3 +351,23 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.title-count-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.total-count-tag{
+  background-color: #d4563a;
+    color: white;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    font-size:medium;
+    font-weight: 600;
+}

@@ -20,7 +20,9 @@ const CartSummary = ({itemInCart}) => {
       <div className="card-summary-right">
         <p className="cart-price">
           <MdCurrencyRupee />
-          {price ? price / 100 : defaultPrice / 100}
+          {(price ? price / 100 : defaultPrice / 100) +
+            ' x ' +
+            itemInCart.count}
         </p>
       </div>
     </div>
