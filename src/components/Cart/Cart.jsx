@@ -24,7 +24,7 @@ const Cart = () => {
   return (
     <div className="cart-container">
       <div className="item-cart">
-        <div className="heading">Cart</div>
+        {cartCount.length > 0 && <div className="heading">Cart</div>}
         {cartCount.length > 0 ? (
           cartCount.map((Item) => {
             return <CartItem itemInCart={Item} />;
@@ -38,15 +38,16 @@ const Cart = () => {
       <div className="order-summary-container">
         <div className="order-summary">
           <div className="heading">Order Summary</div>
+          <div className="total-items-container">
+            <p className="title-2">Total Items</p>
+            <p className="title">{cartCount.length}</p>
+          </div>
           {cartCount.map((Item) => {
             return <CartSummary itemInCart={Item} />;
           })}
-          <div className="total-items-container">
-            <p className="title">Total Items</p>
-            <p className="title">{cartCount.length}</p>
-          </div>
+
           <div className="total-cost-container">
-            <p className="title">Total Cost</p>
+            <p className="title-2">Total Cost</p>
             <p className="title">{totalCost / 100}</p>
           </div>
         </div>

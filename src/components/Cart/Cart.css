@@ -53,6 +53,12 @@
   color: black;
 }
 
+.title-2{
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #666666;
+}
+
 .cart-item-container{
   margin: 1rem 0 1rem 0 ;
   padding-bottom: 1rem;
@@ -322,3 +328,4 @@
 .empty > img{
   width: 70%;
 }
+
