@@ -8,11 +8,12 @@ const MenuList = ({menuList}) => {
     <>
       {updatedList.map((Item) => {
         let {title, itemCards} = Item.card.card;
-        // console.log(title + itemCards[0]);
         if (title !== undefined && itemCards !== undefined) {
           return (
             <>
-              <h3 className="catageory-title">{title}</h3>
+              <h3 className="catageory-title">
+                {`${title} (${itemCards.length})`}
+              </h3>
               <MenuItemRender itemCards={itemCards} />
             </>
           );

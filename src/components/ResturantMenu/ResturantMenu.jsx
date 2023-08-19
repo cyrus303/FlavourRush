@@ -5,8 +5,8 @@ import {BsStarFill} from 'react-icons/bs';
 import {RxLapTimer} from 'react-icons/rx';
 import {HiOutlineCurrencyRupee} from 'react-icons/hi';
 import OfferCard from './OfferCard';
-import './resturantMenu.css';
 import MenuList from './MenuList';
+import './resturantMenu.css';
 
 const ResturantMenu = () => {
   const [resturantBrief, setResturantBrief] = useState([]);
