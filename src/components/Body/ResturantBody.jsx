@@ -115,7 +115,10 @@ function Body() {
         setFiltredResturants={setFiltredResturants}
       />
       <h2 className="title">
-        Restaurants with online food delivery in {appLocation}
+        {listOfResturants.length > 0
+          ? `Restaurants with online food delivery in ${appLocation}`
+          : `Sorry no resturants are open at this time in
+            ${appLocation}`}
       </h2>
       <div className="res-container">
         {filtredResturants.map((card) => (

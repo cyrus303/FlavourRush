@@ -3,11 +3,44 @@ import CartSummary from './CartSummary';
 import {useContext} from 'react';
 import {CartContext} from '../../Context/CartContext';
 import cartIsEmpty from '../../assets/cart-is-empty.svg';
+import {MdCurrencyRupee} from 'react-icons/md';
 import './Cart.css';
 
 const Cart = () => {
   const {valueToPass} = useContext(CartContext);
   const {cartCount, SetCartCount} = valueToPass;
+
+  // console.log(cartCount);
+
+  ////////////////////////////////
+  const resultArray = [];
+
+  // Create a map to track unique items and their counts
+  const itemMap = new Map();
+
+  // Iterate through the input array
+  for (const itemObj of cartCount) {
+    const item = itemObj.item;
+    const itemId = item.id;
+
+    // If the item is already in the map, increase its count
+    if (itemMap.has(itemId)) {
+      const existingItem = itemMap.get(itemId);
+      existingItem.count += 1;
+    } else {
+      // If the item is not in the map, add it with a count of 1
+      itemMap.set(itemId, {...itemObj, count: 1});
+    }
+  }
+
+  // Convert the map values back to an array
+  for (const uniqueItem of itemMap.values()) {
+    resultArray.push(uniqueItem);
+  }
+
+  // console.log(resultArray);
+
+  /////////////////////////
 
   let totalCost = cartCount.reduce(function (prevValue, currValue) {
     if (currValue.item.price) {
@@ -17,6 +50,11 @@ const Cart = () => {
     }
   }, 0);
 
+  let deliveryCharge =
+    (totalCost * ((Math.random() * 10) / 10)) / 1000;
+
+  let GST = (totalCost / 100) * 0.15;
+
   const handleClearCart = () => {
     SetCartCount([]);
   };
@@ -24,9 +62,9 @@ const Cart = () => {
   return (
     <div className="cart-container">
       <div className="item-cart">
-        <div className="heading">Cart</div>
+        {cartCount.length > 0 && <div className="heading">Cart</div>}
         {cartCount.length > 0 ? (
-          cartCount.map((Item) => {
+          resultArray.map((Item) => {
             return <CartItem itemInCart={Item} />;
           })
         ) : (
@@ -38,16 +76,33 @@ const Cart = () => {
       <div className="order-summary-container">
         <div className="order-summary">
           <div className="heading">Order Summary</div>
-          {cartCount.map((Item) => {
+          <div className="total-items-container">
+            <p className="title-2">Total Items</p>
+            <p className="header-count-tag">{cartCount.length}</p>
+          </div>
+          {resultArray.map((Item) => {
             return <CartSummary itemInCart={Item} />;
           })}
-          <div className="total-items-container">
-            <p className="title">Total Items</p>
-            <p className="title">{cartCount.length}</p>
+          <div className="gst-container">
+            <p>GST</p>
+            <p className="gst-price">
+              <MdCurrencyRupee className="rupee-logo" />
+              {GST}
+            </p>
+          </div>
+          <div className="dc-container">
+            <p>Delivery Charge</p>
+            <p className="gst-price">
+              <MdCurrencyRupee className="rupee-logo" />
+              {Math.floor(deliveryCharge)}
+            </p>
           </div>
           <div className="total-cost-container">
             <p className="title">Total Cost</p>
-            <p className="title">{totalCost / 100}</p>
+            <p className="cart-price">
+              <MdCurrencyRupee />
+              {Math.floor(totalCost / 100 + GST + deliveryCharge)}
+            </p>
           </div>
         </div>
         <div className="btn-conatiner">

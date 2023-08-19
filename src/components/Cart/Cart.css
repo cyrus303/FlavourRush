@@ -51,6 +51,17 @@
   text-transform: capitalize;
   font-weight: 500;
   color: black;
+  /* width: 90%; */
+}
+
+.summary-item-title{
+  width: 90%;
+}
+
+.title-2{
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #666666;
 }
 
 .cart-item-container{
@@ -321,4 +332,42 @@
 }
 .empty > img{
   width: 70%;
+}
+
+.gst-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.gst-price{
+  display: flex;
+  align-items: center;
+}
+
+.dc-container{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-count-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.total-count-tag{
+  background-color: #d4563a;
+    color: white;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    font-size:medium;
+    font-weight: 600;
 }
