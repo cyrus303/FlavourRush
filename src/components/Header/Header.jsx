@@ -5,14 +5,17 @@ import {FaLocationDot} from 'react-icons/fa6';
 import {RiShoppingCart2Fill} from 'react-icons/ri';
 import './header.css';
 import {Link} from 'react-router-dom';
-
 import {useContext} from 'react';
 import appLocationContext from '../../Context/Context';
+import {CartContext} from '../../Context/CartContext';
 
 export const Header = () => {
   const {appLocation, setAppLocation} = useContext(
     appLocationContext
   );
+
+  const {cartCount} = useContext(CartContext);
+  console.log(cartCount.count);
 
   return (
     <div className="header">

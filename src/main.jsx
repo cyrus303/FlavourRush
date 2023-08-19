@@ -6,6 +6,7 @@ import Contact from './components/Contact/Contact.jsx';
 import Error from './components/Error/Error.jsx';
 import ResturantBody from './components/Body/ResturantBody.jsx';
 import ResturantMenu from './components/ResturantMenu/ResturantMenu.jsx';
+import {CartProvider} from './Context/CartContext.jsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -34,5 +35,7 @@ const appRouter = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={appRouter} />
+  <CartProvider>
+    <RouterProvider router={appRouter} />
+  </CartProvider>
 );
