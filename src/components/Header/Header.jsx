@@ -43,13 +43,15 @@ export const Header = () => {
           <li>
             <Link to={'/contact'}>Contact</Link>
           </li>
-          <li className="cart-icon">
-            <RiShoppingCart2Fill /> Cart
-            {cartCount.length > 0 && (
-              <span className="header-count-tag">
-                {cartCount.length}
-              </span>
-            )}
+          <li>
+            <Link to={'/cart'} className="cart-icon">
+              <RiShoppingCart2Fill /> Cart
+              {cartCount.length > 0 && (
+                <span className="header-count-tag">
+                  {cartCount.length}
+                </span>
+              )}
+            </Link>
           </li>
         </ul>
       </div>

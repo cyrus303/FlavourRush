@@ -18,7 +18,12 @@ const MenuItemRender = ({itemCards}) => {
       SetCartCount([...cartCount, {item: dish.card.info, count: 1}]);
     };
 
-    console.log(cartCount);
+    // // const findItem = () => {};
+
+    // cartCount.map((Item) => {
+    //   console.log(Item.item.id);
+    // });
+
     return (
       <div className="each-item-container" key={id}>
         <div className="left-container">
@@ -33,9 +38,7 @@ const MenuItemRender = ({itemCards}) => {
           <p className="description">{description}</p>
         </div>
         <div className="right-container">
-          {cartCount.count && (
-            <div className="count-tag">{cartCount.count}</div>
-          )}
+          {/* {<div className="count-tag">{cartCount}</div>} */}
 
           <img
             className="item-logo"
