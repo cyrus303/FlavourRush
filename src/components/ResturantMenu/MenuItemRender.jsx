@@ -11,18 +11,19 @@ const MenuItemRender = ({itemCards}) => {
   const {cartCount, SetCartCount} = valueToPass;
 
   return itemCards.map((dish) => {
-    const {name, price, imageId, description, isVeg, id} =
-      dish.card.info;
+    const {
+      name,
+      price,
+      imageId,
+      description,
+      isVeg,
+      id,
+      defaultPrice,
+    } = dish.card.info;
 
     const handleAddToCart = (event) => {
       SetCartCount([...cartCount, {item: dish.card.info, count: 1}]);
     };
-
-    // // const findItem = () => {};
-
-    // cartCount.map((Item) => {
-    //   console.log(Item.item.id);
-    // });
 
     return (
       <div className="each-item-container" key={id}>
@@ -33,7 +34,7 @@ const MenuItemRender = ({itemCards}) => {
           <h4>{name}</h4>
           <h5>
             <MdCurrencyRupee />
-            {price / 100}
+            {price ? price / 100 : defaultPrice / 100}
           </h5>
           <p className="description">{description}</p>
         </div>
