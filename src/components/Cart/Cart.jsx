@@ -79,7 +79,7 @@ const Cart = () => {
             <p>GST</p>
             <p className="gst-price">
               <MdCurrencyRupee className="rupee-logo" />
-              {GST}
+              {Math.floor(GST)}
             </p>
           </div>
           <div className="dc-container">

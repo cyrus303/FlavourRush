@@ -86,12 +86,12 @@
   color: black;
   display: flex;
   align-items: center;
+
 }
 
 .cart-description{
   /* width: 80%; */
 }
-
 
 .card-summary-container{
   border-bottom: 1px solid #66666626;
@@ -99,6 +99,10 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start
+}
+
+.card-summary-left{
+  width: 70%;
 }
 
 /* pay button */
@@ -377,6 +381,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .increament-decrement{
