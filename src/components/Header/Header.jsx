@@ -7,7 +7,7 @@ import './header.css';
 import {Link} from 'react-router-dom';
 
 import {useContext} from 'react';
-import appLocationContext from '../../uitils/Context';
+import appLocationContext from '../../Context/Context';
 
 export const Header = () => {
   const {appLocation, setAppLocation} = useContext(
