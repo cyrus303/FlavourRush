@@ -3,6 +3,7 @@ import CartSummary from './CartSummary';
 import {useContext} from 'react';
 import {CartContext} from '../../Context/CartContext';
 import cartIsEmpty from '../../assets/cart-is-empty.svg';
+import {MdCurrencyRupee} from 'react-icons/md';
 import './Cart.css';
 
 const Cart = () => {
@@ -16,6 +17,11 @@ const Cart = () => {
       return prevValue + currValue.item.defaultPrice;
     }
   }, 0);
+
+  let deliveryCharge =
+    (totalCost * ((Math.random() * 10) / 10)) / 1000;
+
+  let GST = (totalCost / 100) * 0.15;
 
   const handleClearCart = () => {
     SetCartCount([]);
@@ -45,10 +51,26 @@ const Cart = () => {
           {cartCount.map((Item) => {
             return <CartSummary itemInCart={Item} />;
           })}
-
+          <div className="gst-container">
+            <p>GST</p>
+            <p className="gst-price">
+              <MdCurrencyRupee className="rupee-logo" />
+              {GST}
+            </p>
+          </div>
+          <div className="dc-container">
+            <p>Delivery Charge</p>
+            <p className="gst-price">
+              <MdCurrencyRupee className="rupee-logo" />
+              {Math.floor(deliveryCharge)}
+            </p>
+          </div>
           <div className="total-cost-container">
-            <p className="title-2">Total Cost</p>
-            <p className="title">{totalCost / 100}</p>
+            <p className="title">Total Cost</p>
+            <p className="cart-price">
+              <MdCurrencyRupee />
+              {Math.floor(totalCost / 100 + GST + deliveryCharge)}
+            </p>
           </div>
         </div>
         <div className="btn-conatiner">
