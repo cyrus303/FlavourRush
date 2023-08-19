@@ -51,6 +51,11 @@
   text-transform: capitalize;
   font-weight: 500;
   color: black;
+  /* width: 90%; */
+}
+
+.summary-item-title{
+  width: 90%;
 }
 
 .title-2{

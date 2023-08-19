@@ -46,7 +46,7 @@ const Cart = () => {
           <div className="heading">Order Summary</div>
           <div className="total-items-container">
             <p className="title-2">Total Items</p>
-            <p className="title">{cartCount.length}</p>
+            <p className=" header-count-tag">{cartCount.length}</p>
           </div>
           {cartCount.map((Item) => {
             return <CartSummary itemInCart={Item} />;

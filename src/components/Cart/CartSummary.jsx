@@ -14,7 +14,7 @@ const CartSummary = ({itemInCart}) => {
   return (
     <div className="card-summary-container">
       <div className="card-summary-left">
-        <p className="title">{name}</p>
+        <p className="title summary-item-title">{name}</p>
         <p>{category}</p>
       </div>
       <div className="card-summary-right">
