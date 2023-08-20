@@ -1,4 +1,5 @@
 import {createContext, useState, useEffect} from 'react';
+import _ from 'lodash';
 
 const CartContext = createContext();
 
@@ -24,6 +25,12 @@ const CartProvider = ({children}) => {
     for (const uniqueItem of itemMap.values()) {
       refactoredCart.push(uniqueItem);
     }
+
+    // const arrayOfObjects = [...refactoredCart]; // Your array of objects
+    // console.log(arrayOfObjects);
+    // const sortedCart = _.sortBy(arrayOfObjects, 'count').reverse();
+    // console.log(sortedCart);
+
     setCartSummary(refactoredCart);
   }, [cartCount]);
 

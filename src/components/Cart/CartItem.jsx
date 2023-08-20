@@ -20,7 +20,7 @@ const CartItem = ({itemInCart}) => {
     itemAttribute,
   } = itemInCart.item;
 
-  const handleCountIncrease = ({event}) => {
+  const handleCountDecrease = ({event}) => {
     const indexOfObject = cartCount.findIndex((element) => {
       return element.item.id === itemInCart.item.id;
     });
@@ -28,6 +28,12 @@ const CartItem = ({itemInCart}) => {
       ...cartCount.slice(0, indexOfObject),
       ...cartCount.slice(indexOfObject + 1),
     ];
+    SetCartCount(updatedCart);
+  };
+
+  const handleCountIncrease = () => {
+    const updatedCart = [...cartCount, itemInCart];
+    console.log(updatedCart);
     SetCartCount(updatedCart);
   };
 
@@ -54,13 +60,16 @@ const CartItem = ({itemInCart}) => {
           </p>
         </div>
         <div className="increament-decrement">
-          <button className="increase-logo-btn">
+          <button
+            className="increase-logo-btn"
+            onClick={handleCountIncrease}
+          >
             <AiFillPlusCircle className="increase-logo" />
           </button>
           <p className="total-count-tag tag">{itemInCart.count}</p>
           <button
             className="decrease-logo-btn"
-            onClick={(event) => handleCountIncrease(event)}
+            onClick={handleCountDecrease}
           >
             <AiFillMinusCircle className="decrease-logo" />
           </button>
