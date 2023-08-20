@@ -8,31 +8,8 @@ import './Cart.css';
 
 const Cart = () => {
   const {valueToPass} = useContext(CartContext);
-  const {cartCount, SetCartCount} = valueToPass;
-
-  ////////////////////////////////
-  const resultArray = [];
-
-  // Create a map to track unique items and their counts
-  const itemMap = new Map();
-  // Iterate through the input array
-  for (const itemObj of cartCount) {
-    const item = itemObj.item;
-    const itemId = item.id;
-    // If the item is already in the map, increase its count
-    if (itemMap.has(itemId)) {
-      const existingItem = itemMap.get(itemId);
-      existingItem.count += 1;
-    } else {
-      // If the item is not in the map, add it with a count of 1
-      itemMap.set(itemId, {...itemObj, count: 1});
-    }
-  }
-  // Convert the map values back to an array
-  for (const uniqueItem of itemMap.values()) {
-    resultArray.push(uniqueItem);
-  }
-  /////////////////////////
+  const {cartCount, SetCartCount, cartSummary, setCartSummary} =
+    valueToPass;
 
   let totalCost = cartCount.reduce(function (prevValue, currValue) {
     if (currValue.item.price) {
@@ -56,7 +33,7 @@ const Cart = () => {
       <div className="item-cart">
         {cartCount.length > 0 && <div className="heading">Cart</div>}
         {cartCount.length > 0 ? (
-          resultArray.map((Item) => {
+          cartSummary.map((Item) => {
             return <CartItem itemInCart={Item} />;
           })
         ) : (
@@ -72,7 +49,7 @@ const Cart = () => {
             <p className="title-2">Total Items</p>
             <p className="header-count-tag">{cartCount.length}</p>
           </div>
-          {resultArray.map((Item) => {
+          {cartSummary.map((Item) => {
             return <CartSummary itemInCart={Item} />;
           })}
           <div className="gst-container">

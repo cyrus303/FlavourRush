@@ -1,37 +1,37 @@
-import {createContext, useState} from 'react';
+import {createContext, useState, useEffect} from 'react';
 
 const CartContext = createContext();
 
 const CartProvider = ({children}) => {
   const [cartCount, SetCartCount] = useState([]);
+  const [cartSummary, setCartSummary] = useState([]);
 
-  // const resultArray = [];
+  const refactoredCart = [];
 
-  // // Create a map to track unique items and their counts
-  // const itemMap = new Map();
-  // // Iterate through the input array
-  // for (const itemObj of cartCount) {
-  //   const item = itemObj.item;
-  //   const itemId = item.id;
-  //   // If the item is already in the map, increase its count
-  //   if (itemMap.has(itemId)) {
-  //     const existingItem = itemMap.get(itemId);
-  //     existingItem.count += 1;
-  //   } else {
-  //     // If the item is not in the map, add it with a count of 1
-  //     itemMap.set(itemId, {...itemObj, count: 1});
-  //   }
-  // }
-  // // Convert the map values back to an array
-  // for (const uniqueItem of itemMap.values()) {
-  //   resultArray.push(uniqueItem);
-  // }
+  useEffect(() => {
+    const itemMap = new Map();
 
-  // SetCartCount(resultArray);
+    for (const itemObj of cartCount) {
+      const item = itemObj.item;
+      const itemId = item.id;
+      if (itemMap.has(itemId)) {
+        const existingItem = itemMap.get(itemId);
+        existingItem.count += 1;
+      } else {
+        itemMap.set(itemId, {...itemObj, count: 1});
+      }
+    }
+    for (const uniqueItem of itemMap.values()) {
+      refactoredCart.push(uniqueItem);
+    }
+    setCartSummary(refactoredCart);
+  }, [cartCount]);
 
   const valueToPass = {
-    SetCartCount,
     cartCount,
+    SetCartCount,
+    cartSummary,
+    setCartSummary,
   };
 
   return (
