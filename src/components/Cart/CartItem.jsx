@@ -33,7 +33,6 @@ const CartItem = ({itemInCart}) => {
 
   const handleCountIncrease = () => {
     const updatedCart = [...cartCount, itemInCart];
-    console.log(updatedCart);
     SetCartCount(updatedCart);
   };
 

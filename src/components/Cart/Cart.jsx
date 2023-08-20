@@ -34,7 +34,7 @@ const Cart = () => {
         {cartCount.length > 0 && <div className="heading">Cart</div>}
         {cartCount.length > 0 ? (
           cartSummary.map((Item) => {
-            return <CartItem itemInCart={Item} />;
+            return <CartItem itemInCart={Item} key={Item.item.id} />;
           })
         ) : (
           <div className="empty">
