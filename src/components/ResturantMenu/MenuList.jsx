@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import MenuItemRender from './MenuItemRender';
 
 const MenuList = ({menuList}) => {

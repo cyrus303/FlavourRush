@@ -1,51 +1,16 @@
-import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import {MENU_URL} from '../../uitils/config';
 import {BsStarFill} from 'react-icons/bs';
 import {RxLapTimer} from 'react-icons/rx';
 import {HiOutlineCurrencyRupee} from 'react-icons/hi';
 import OfferCard from './OfferCard';
 import MenuList from './MenuList';
 import './resturantMenu.css';
+import useResturantMenu from '../../uitils/hooks/useResturantMenu';
 
 const ResturantMenu = () => {
-  const [resturantBrief, setResturantBrief] = useState([]);
-  const [currentOffers, setCurrentOffers] = useState([]);
-  const [menuList, setMenuList] = useState(null);
   const {resId} = useParams();
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const response = await fetch(MENU_URL + resId);
-    const data = await response.json();
-    setStateVariable(data);
-  };
-
-  const setStateVariable = ({data}) => {
-    data.cards.map((Item) => {
-      if (
-        //for resturant brief
-        !Item.groupedCard &&
-        Item.card.card['@type'] ===
-          'type.googleapis.com/swiggy.presentation.food.v2.Restaurant'
-      ) {
-        setResturantBrief(Item?.card?.card?.info);
-      } else if (
-        !Item.groupedCard &&
-        Item.card.card['@type'] ===
-          'type.googleapis.com/swiggy.gandalf.widgets.v2.GridWidget'
-      ) {
-        setCurrentOffers(
-          Item?.card?.card?.gridElements?.infoWithStyle?.offers
-        );
-      } else if ('groupedCard' in Item) {
-        setMenuList(Item.groupedCard.cardGroupMap.REGULAR.cards);
-      }
-    });
-  };
+  const {resturantBrief, currentOffers, menuList} =
+    useResturantMenu(resId);
 
   if (menuList === null) return null;
 
