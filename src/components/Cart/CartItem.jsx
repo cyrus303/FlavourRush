@@ -60,17 +60,17 @@ const CartItem = ({itemInCart}) => {
         </div>
         <div className="increament-decrement">
           <button
-            className="increase-logo-btn"
-            onClick={handleCountIncrease}
-          >
-            <AiFillPlusCircle className="increase-logo" />
-          </button>
-          <p className="total-count-tag tag">{itemInCart.count}</p>
-          <button
             className="decrease-logo-btn"
             onClick={handleCountDecrease}
           >
             <AiFillMinusCircle className="decrease-logo" />
+          </button>
+          <p className="total-count-tag tag">{itemInCart.count}</p>
+          <button
+            className="increase-logo-btn"
+            onClick={handleCountIncrease}
+          >
+            <AiFillPlusCircle className="increase-logo" />
           </button>
         </div>
       </div>
