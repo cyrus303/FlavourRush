@@ -12,8 +12,7 @@ const SearchBar = ({
     SetSearchTerm(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    // event.preventDefault();
+  const handleSubmit = () => {
     const filtredRes = listOfResturants.filter((res) =>
       res.info.name.toLowerCase().includes(searchTerm.toLowerCase())
     );

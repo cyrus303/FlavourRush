@@ -8,6 +8,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import {ItemShimmerUI} from '../../uitils/shimmerUI/ItemShimmerUI';
 import appLocationContext from '../../Context/Context';
 import {Link} from 'react-router-dom';
+import useOnlineStatus from '../../uitils/hooks/useOnlineStatus';
 
 function Body() {
   const {appLocation, setAppLocation} = useContext(
@@ -92,6 +93,16 @@ function Body() {
       setFiltredResturants(sortedArray);
     }
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        looks like you are offline!! please check your internet
+        connection
+      </h1>
+    );
 
   return loading ? (
     <div className="body">
