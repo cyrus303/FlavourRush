@@ -17,8 +17,8 @@ function Location({setAppLocation, appLocation}) {
         {appLocation}
       </button>
       {open ? (
-        <ul className="menu">
-          <li className="menu-item">
+        <ul className="menu-dropdown">
+          <li className="menu-dropdown-item">
             <button
               onClick={(event) => {
                 handleMenu(event);
@@ -27,7 +27,7 @@ function Location({setAppLocation, appLocation}) {
               Bengaluru
             </button>
           </li>
-          <li className="menu-item">
+          <li className="menu-dropdown-item">
             <button
               onClick={(event) => {
                 handleMenu(event);
@@ -36,7 +36,7 @@ function Location({setAppLocation, appLocation}) {
               Mumbai
             </button>
           </li>
-          <li className="menu-item">
+          <li className="menu-dropdown-item">
             <button
               onClick={(event) => {
                 handleMenu(event);
