@@ -42,6 +42,14 @@ function Body() {
     setLoading(false);
   };
 
+  const fetchData = async () => {
+    const response = await fetch(
+      `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=${cordinates.lat}&lng=${cordinates.lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+    );
+    const jsonData = await response.json();
+    setStateVariable(jsonData);
+  };
+
   switch (appLocation) {
     case 'Bengaluru':
       cordinates = {
@@ -64,15 +72,6 @@ function Body() {
     default:
       break;
   }
-
-  const fetchData = async () => {
-    const response = await fetch(
-      `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=${cordinates.lat}&lng=${cordinates.lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
-    );
-    const jsonData = await response.json();
-    setStateVariable(jsonData);
-  };
-
   // console.log(listOfResturants);
 
   const handleSortRes = (event) => {
