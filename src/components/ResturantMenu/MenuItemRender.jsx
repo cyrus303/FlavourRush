@@ -39,8 +39,6 @@ const MenuItemRender = ({itemCards}) => {
           <p className="description">{description}</p>
         </div>
         <div className="right-container">
-          {/* {<div className="count-tag">{cartCount}</div>} */}
-
           <img
             className="item-logo"
             src={CDN_URL + imageId}
