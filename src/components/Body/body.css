@@ -22,12 +22,25 @@
   align-items: center;
   margin: 16px;
   transition: all 0.1s ease-in;
-  width: 95%
+  width: 95%;
 }
 
-.res-card:hover{
-    box-shadow: 0px 2px 40px #d4563aaa;
-    scale: .95;
+.res-card-hover:hover {
+  box-shadow: 0px 2px 40px #d4563aaa;
+  scale: 95%;
+}
+
+.label-anchor{
+    transition: all 0.1s ease-in;
+}
+
+.label-anchor:hover{
+  scale: 95%;
+}
+
+.res-card:hover ~ .label-anchor {
+  scale: 150%;
+  color: red
 }
 
 .res-logo {
@@ -36,6 +49,7 @@
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 8px;
+  box-shadow: 0px -35px 74px 0px rgba(0, 0, 0, 0.5) inset;
 }
 
 h3 {
@@ -122,4 +136,21 @@ p {
   /* padding-left: 10rem; */
   padding-top: 2rem;
  text-align: center;
+}
+
+/* discount label */
+
+.label-anchor{
+  position: relative;
+}
+
+.label-container{
+  position: absolute;
+  top: 60%;
+  left: 0;
+  z-index: 1;
+  color: whitesmoke;
+  font-size: larger;
+  font-weight: bolder;
+  margin-left: 2rem;
 }

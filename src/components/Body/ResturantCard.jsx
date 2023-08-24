@@ -15,10 +15,15 @@ function ResturantCard({resData}) {
     cuisines,
     sla,
     costForTwo,
+    aggregatedDiscountInfoV3,
   } = resData.info;
 
   return (
-    <div className="res-card">
+    <div
+      className={`res-card + ${
+        aggregatedDiscountInfoV3.header ? '' : 'res-card-hover'
+      }`}
+    >
       <img
         className="res-logo"
         src={CDN_URL + cloudinaryImageId}
@@ -52,5 +57,22 @@ function ResturantCard({resData}) {
     </div>
   );
 }
+
+export const withDiscountLabel = (ResturantCard) => {
+  return (props) => {
+    return (
+      <div className="label-anchor">
+        <div className="label-container">
+          <label>
+            {props.resData.info.aggregatedDiscountInfoV3.header +
+              ' ' +
+              props.resData.info.aggregatedDiscountInfoV3.subHeader}
+          </label>
+        </div>
+        <ResturantCard {...props} />
+      </div>
+    );
+  };
+};
 
 export default ResturantCard;

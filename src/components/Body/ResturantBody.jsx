@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from 'react';
-import ResturantCard from './ResturantCard';
+import ResturantCard, {withDiscountLabel} from './ResturantCard';
 import {SearchBarShimmer} from '../../uitils/shimmerUI/SearchBar';
 import './body.css';
 import SearchBar from './SearchBar';
@@ -19,6 +19,8 @@ function Body() {
   const [filtredResturants, setFiltredResturants] = useState([]);
   const [searchTerm, SetSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
+
+  const DiscountedResturantCard = withDiscountLabel(ResturantCard);
 
   let cordinates = {};
   useEffect(() => {
@@ -50,7 +52,6 @@ function Body() {
     );
     const jsonData = await response.json();
     setStateVariable(jsonData);
-    console.log('JsonData', jsonData);
   };
 
   switch (appLocation) {
@@ -136,7 +137,11 @@ function Body() {
       <div className="res-container">
         {filtredResturants.map((card) => (
           <Link key={card.info.id} to={'/resturant/' + card.info.id}>
-            <ResturantCard resData={card} />
+            {card.info.aggregatedDiscountInfoV3.discountTag ? (
+              <DiscountedResturantCard resData={card} />
+            ) : (
+              <ResturantCard resData={card} />
+            )}
           </Link>
         ))}
       </div>
