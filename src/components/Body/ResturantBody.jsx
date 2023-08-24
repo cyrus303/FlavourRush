@@ -42,12 +42,15 @@ function Body() {
     setLoading(false);
   };
 
+  console.log('filtred Resturants', filtredResturants);
+
   const fetchData = async () => {
     const response = await fetch(
       `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=${cordinates.lat}&lng=${cordinates.lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
     );
     const jsonData = await response.json();
     setStateVariable(jsonData);
+    console.log('JsonData', jsonData);
   };
 
   switch (appLocation) {

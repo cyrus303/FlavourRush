@@ -4,6 +4,7 @@ import {useContext} from 'react';
 import {CartContext} from '../../Context/CartContext';
 import cartIsEmpty from '../../assets/cart-is-empty.svg';
 import {MdCurrencyRupee} from 'react-icons/md';
+import {Link} from 'react-router-dom';
 import './Cart.css';
 
 const Cart = () => {
@@ -39,6 +40,13 @@ const Cart = () => {
         ) : (
           <div className="empty">
             <img src={cartIsEmpty} alt="veg logo" />
+            <button className="btn-back">
+              <Link to={'/'}>
+                <span className="lable-back">
+                  See Resturants Near You
+                </span>
+              </Link>
+            </button>
           </div>
         )}
       </div>
