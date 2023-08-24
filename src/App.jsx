@@ -5,7 +5,7 @@ import appLocationContext from './Context/Context';
 import {Outlet} from 'react-router-dom';
 
 function App() {
-  const [appLocation, setAppLocation] = useState('Bengaluru');
+  const [appLocation, setAppLocation] = useState('Mumbai');
 
   return (
     <appLocationContext.Provider

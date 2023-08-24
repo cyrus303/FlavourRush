@@ -9,6 +9,9 @@ import {ItemShimmerUI} from '../../uitils/shimmerUI/ItemShimmerUI';
 import appLocationContext from '../../Context/Context';
 import {Link} from 'react-router-dom';
 import useOnlineStatus from '../../uitils/hooks/useOnlineStatus';
+import EmblaCarousel from './EmblaCarousel';
+import './embla.css';
+import './sandbox.css';
 
 function Body() {
   const {appLocation, setAppLocation} = useContext(
@@ -20,7 +23,15 @@ function Body() {
   const [searchTerm, SetSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
+  const [carousel, setCarousel] = useState([]);
+
   const DiscountedResturantCard = withDiscountLabel(ResturantCard);
+
+  const OPTIONS = {
+    dragFree: true,
+    containScroll: 'trimSnaps',
+    loop: true,
+  };
 
   let cordinates = {};
   useEffect(() => {
@@ -40,11 +51,12 @@ function Body() {
           item?.card?.card?.gridElements?.infoWithStyle?.restaurants
         );
       }
+      if (item.card.card.id === 'topical_banner') {
+        setCarousel(item.card.card.gridElements.infoWithStyle.info);
+      }
     });
     setLoading(false);
   };
-
-  console.log('filtred Resturants', filtredResturants);
 
   const fetchData = async () => {
     const response = await fetch(
@@ -128,6 +140,12 @@ function Body() {
         SetSearchTerm={SetSearchTerm}
         setFiltredResturants={setFiltredResturants}
       />
+
+      <div className="carousel-container">
+        <h2 className="title">Best Offers For You</h2>
+        <EmblaCarousel carousel={carousel} options={OPTIONS} />
+      </div>
+
       <h2 className="title">
         {listOfResturants.length > 0
           ? `Restaurants with online food delivery in ${appLocation}`
@@ -137,7 +155,7 @@ function Body() {
       <div className="res-container">
         {filtredResturants.map((card) => (
           <Link key={card.info.id} to={'/resturant/' + card.info.id}>
-            {card.info.aggregatedDiscountInfoV3.discountTag ? (
+            {card.info.aggregatedDiscountInfoV3.header ? (
               <DiscountedResturantCard resData={card} />
             ) : (
               <ResturantCard resData={card} />

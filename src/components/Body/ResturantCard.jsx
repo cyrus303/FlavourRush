@@ -20,15 +20,23 @@ function ResturantCard({resData}) {
 
   return (
     <div
-      className={`res-card + ${
+      className={`res-card ${
         aggregatedDiscountInfoV3.header ? '' : 'res-card-hover'
       }`}
     >
-      <img
-        className="res-logo"
-        src={CDN_URL + cloudinaryImageId}
-        alt="resturant image"
-      />
+      <div
+        className={
+          aggregatedDiscountInfoV3.header
+            ? 'img-container'
+            : 'res-logo'
+        }
+      >
+        <img
+          className="res-logo"
+          src={CDN_URL + cloudinaryImageId}
+          alt="resturant image"
+        />
+      </div>
       <div className="name-location-container">
         <h4 className="name">{name} </h4>
         <p className="pin-container">
