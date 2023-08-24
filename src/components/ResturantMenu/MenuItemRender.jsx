@@ -21,7 +21,7 @@ const MenuItemRender = ({itemCards}) => {
       defaultPrice,
     } = dish.card.info;
 
-    const handleAddToCart = (event) => {
+    const handleAddToCart = () => {
       SetCartCount([...cartCount, {item: dish.card.info, count: 1}]);
     };
 
