@@ -9,7 +9,8 @@ const OfferCard = ({offer}) => {
         <p>{header}</p>
       </div>
       <p className="cuppon-code">
-        {couponCode} | {description}
+        {couponCode ? couponCode : ''}{' '}
+        {description ? '|' + description : ''}
       </p>
     </div>
   );

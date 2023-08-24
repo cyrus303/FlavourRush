@@ -19,13 +19,13 @@
 .embla__slide {
   min-width: 20%;
   position: relative;
-  flex: 0 0 35%;
+  flex: 0 0 27%;
   /* margin-left: 2rem; */
 }
 
 .embla__slide__img {
   display: block;
-  height: 300px;
+  height: 250px;
   object-fit:cover;
 }
 

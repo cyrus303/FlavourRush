@@ -5,13 +5,24 @@ import {useEffect} from 'react';
 
 const EmblaCarousel = (props) => {
   const {carousel, options} = props;
-  const [emblaRef] = useEmblaCarousel(options);
-  console.log(carousel);
+
+  const autoplayOptions = {
+    delay: 3000,
+    rootNode: (emblaRoot) => emblaRoot.parentElement,
+    stopOnInteraction: false,
+    stopOnMouseEnter: true,
+  };
+
+  const [emblaRef] = useEmblaCarousel(options, [
+    Autoplay(autoplayOptions),
+  ]);
+
+  const doubleCarousel = [...carousel, ...carousel];
   return (
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {carousel.map((item) => (
+          {doubleCarousel.map((item) => (
             <div className="embla__slide">
               <img
                 className="embla__slide__img"
