@@ -17,18 +17,17 @@ const EmblaCarousel = (props) => {
     Autoplay(autoplayOptions),
   ]);
 
-  const doubleCarousel = [
-    ...carousel,
-    ...carousel,
-    ...carousel,
-    ...carousel,
-  ];
+  const doubleCarousel = [...carousel, ...carousel, ...carousel];
+
   return (
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {doubleCarousel.map((item) => (
-            <div className="embla__slide">
+            <div
+              className="embla__slide"
+              key={item.id * (Math.random() * 10)}
+            >
               <img
                 className="embla__slide__img"
                 src={CDN_URL + item.imageId}
