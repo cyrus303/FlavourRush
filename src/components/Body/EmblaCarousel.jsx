@@ -17,7 +17,12 @@ const EmblaCarousel = (props) => {
     Autoplay(autoplayOptions),
   ]);
 
-  const doubleCarousel = [...carousel, ...carousel];
+  const doubleCarousel = [
+    ...carousel,
+    ...carousel,
+    ...carousel,
+    ...carousel,
+  ];
   return (
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
