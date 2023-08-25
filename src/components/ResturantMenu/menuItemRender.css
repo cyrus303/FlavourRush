@@ -112,20 +112,6 @@ width: 20px
 }
 
 /* count tag */
-/* .count-tag{
-  background-color: #ffdfab;
-  box-shadow: 0 0 15px 1px black;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  font-weight: bold;
-} */
 
 .count-tag{
   background-color: #d4563a;
