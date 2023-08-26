@@ -88,7 +88,6 @@ function Body() {
     default:
       break;
   }
-  // console.log(listOfResturants);
 
   const handleSortRes = (event) => {
     console.log(event.target.textContent);
@@ -118,6 +117,26 @@ function Body() {
         connection
       </h1>
     );
+
+  setTimeout(async () => {
+    const response = await fetch(
+      `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=${cordinates.lat}&lng=${cordinates.lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+    );
+    const jsonData = await response.json();
+    console.log('2 seconds');
+    jsonData.data.cards.map((item) => {
+      if (item.card.card.id === 'restaurant_grid_listing') {
+        console.log(
+          item?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        );
+        // setFiltredResturants(
+        //   ...filtredResturants,
+        //   item?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        // );
+      }
+    });
+    console.log(jsonData);
+  }, 2000);
 
   return loading ? (
     <div className="body">
